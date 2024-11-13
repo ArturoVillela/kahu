@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Kahu</string>
+
+
+    <string name="init_layout_breeds">Whats my Breed?</string>
+    <string name="init_layout_before">Before Getting a dog</string>
+    <string name="init_layout_training">Trainning</string>
+    <string name="init_layout_dodont">Do and Dont"'"s</string>
+    <string name="init_layout_food">Food</string>
+    <string name="init_layout_qr">QR</string>
+</resources>
