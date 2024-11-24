@@ -1,10 +1,14 @@
 import android.util.Log
+import android.widget.Toast
+import androidx.compose.animation.core.animateIntOffsetAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,7 +23,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -30,30 +33,171 @@ import com.firebaseapp.charlieandroidblog.R
 import com.firebaseapp.charlieandroidblog.utils.UtilsUi
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.firebaseapp.charlieandroidblog.model.Breed4Me
+import com.firebaseapp.charlieandroidblog.utils.UtilContext
+import com.firebaseapp.charlieandroidblog.utils.UtilsContent
+import kotlin.math.roundToInt
 
 class Ui {
 
 
+
     @Composable
-    fun mainScreen() {
-        Column() {
-            //getAppBar()
-            //getLayout()
+    fun screen1Main(navController: NavHostController) {
+        Column (modifier = Modifier.fillMaxWidth()) {
+            getAppBar("Kahu App",navController)
+            getLayout()
+        }
+    }
+
+    @Composable
+    fun screenLogin(navController: NavHostController){
+        Column (modifier = Modifier.fillMaxWidth()) {
+            getAppBar("Kahu App Login", navController)
             getLogin()
         }
     }
 
     @Composable
-    fun getLogin(){
-        Column (modifier = Modifier.fillMaxSize()
-            .padding(50.dp)){
+    fun screenInfo(controller: NavHostController) {
+
+    }
+
+    @Composable
+    fun screenBread4me(controller: NavHostController) {
+
+        var random = remember { mutableStateOf(1) }
+        Column(modifier = Modifier.fillMaxSize()) {
+            getAppBar("Breed For Me",controller)
+//            Card (elevation = CardDefaults.cardElevation(defaultElevation = 15.dp) ,
+//                modifier = Modifier
+//                .padding(horizontal = 8.dp, vertical = 8.dp)
+//                .fillMaxWidth()
+//                //.border(color = Color.Black, width = 1.dp)
+//                .padding(5.dp),
+//                shape = RoundedCornerShape(corner = CornerSize(16.dp))) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(10.dp)) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth() // adjust size as needed
+                        .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
+                        .background(color = UtilsUi.getColorAlmostBlue())
+                        .border(
+                            1.dp,
+                            color = UtilsUi.getColorAlmostBlack(),
+                            RoundedCornerShape(16.dp)
+                        )
+                ) {
+
+                    Row(modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)) {
+                        Text(
+                            text = UtilsContent.getRandomBreed4meInfo(random.value),
+                            style = TextStyle(
+                                color = Color.Black,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold,
+                            ),
+                            modifier = Modifier
+                                .weight(10f)
+                                .padding(10.dp)
+                        )
+                        Image(
+                            painter = painterResource(id = R.drawable.arrow_next),
+                            contentDescription = "Background Image",
+                            modifier = Modifier
+                                .weight(2f)
+                                .padding(10.dp)
+                                .clickable
+                                {
+                                    random.value = (1..10).random()
+                                },
+                            )
+                    }
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+
+                val list = UtilsContent.getListOfBreeds()
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(-25.dp)
+                ) {
+                    items(list.size) {
+                        Box (modifier = Modifier.fillMaxWidth()
+                            .padding(15.dp)
+                        .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
+                        .background(color = UtilsUi.getRandomColor())) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(10.dp)
+                            ) {
+                                Text(  //title
+                                    text = list.get(it).name,
+                                    style = TextStyle(
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White,
+                                        fontSize = 16.sp
+                                    )
+                                )
+                                Text(  //title
+                                    text = list.get(it).type.toString(),
+                                    style = TextStyle(
+                                        color = Color.White,
+                                        fontSize = 14.sp
+                                    )
+                                )
+                                Text(  //title
+                                    text = list.get(it).exerciseNeeds,
+                                    style = TextStyle(
+                                        color = Color.White,
+                                        fontSize = 14.sp
+                                    )
+                                )
+                                Text(  //title
+                                    text = list.get(it).whoShouldOwn,
+                                    style = TextStyle(
+                                        color = Color.White,
+                                        fontSize = 13.sp
+                                    )
+                                )
+                            }
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun getCardForBreed(item: Breed4Me){
+
+    }
+
+    //region Login Screen
+    @Composable
+    fun getLogin() {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(50.dp)
+        ) {
             Image(
                 painter = painterResource(R.drawable.login),
                 contentDescription = null,
@@ -62,75 +206,178 @@ class Ui {
                     .weight(5f)
                     .clip(RoundedCornerShape(15))
             )
-            Column (modifier = Modifier.fillMaxWidth().weight(9f).padding(10.dp)) {
-                Box (modifier = Modifier.fillMaxWidth()
-                    .weight(10f)
-                    //.background(color = UtilsUi.getColorBlue3())
-                    ){
-                    getLoginInfo()
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(9f)
+                    .padding(10.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(12f)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(color = UtilsUi.getColorAlmostWhite())
+                ) {
+                    getLoginType()
                 }
-                Spacer(modifier = Modifier.weight(2f))
             }
         }
     }
 
     @Composable
-    fun getLoginInfo() {
-        // State for storing the entered values for name and password
-        var name by remember { mutableStateOf("") }
-        var password by remember { mutableStateOf("") }
-
-        // Layout: Column to align elements vertically
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp), // Padding around the content
-            verticalArrangement = Arrangement.spacedBy(16.dp) // Spacing between elements
-        ) {
-            // Name TextField
-            OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                label = { Text("Name") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            // Password TextField
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                visualTransformation = PasswordVisualTransformation(), // Hide password characters
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            // Login Button
-            Button(
-                onClick = {
-                    // Handle login action here
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
-                shape = CircleShape, // Rounded button
-                colors = ButtonDefaults.buttonColors(Color.Blue) // Blue color
+    fun getLoginType() {
+        var inLogged = remember { mutableStateOf(false) }
+        val pxToMove = with(LocalDensity.current) { 140.dp.toPx().roundToInt() }
+        val offset by animateIntOffsetAsState(
+            targetValue = if (inLogged.value) IntOffset(pxToMove, 0)
+            else IntOffset.Zero
+        )
+        Column(modifier = Modifier.fillMaxSize()) {
+            Box(modifier = Modifier
+                .offset { offset }
+                .clip(RoundedCornerShape(10.dp))
+                .background(brush = UtilsUi.getBrushGradient())
+                .width(125.dp)
+                .padding(10.dp)
+                .height(30.dp)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                ) {
+                    inLogged.value = !inLogged.value
+                }
             ) {
-                Text("Login", color = Color.White)
+                var text = if (!inLogged.value) "Login" else "Sign In"
+                Text(
+                    text,
+                    color = Color.White, // Set text color to white
+                    fontSize = 22.sp, // Optional: set font size
+                    fontWeight = FontWeight.Bold, modifier = Modifier.align(Alignment.Center)
+                )
             }
+            if (!inLogged.value)
+                getLoginElements()
+            else
+                getSignUpElements()
         }
     }
 
+    @Composable
+    fun getLoginElements() {
+        var name = remember { mutableStateOf("") }
+        var password = remember { mutableStateOf("") }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            TextField(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                value = name.value,
+                onValueChange = {
+                    name.value = it
+                },
+                label = { Text(text = "E - mail") },
+                placeholder = { Text(text = "E-mail") }
+            )
+            TextField(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                value = name.value,
+                onValueChange = {
+                    name.value = it
+                },
+                label = { Text(text = "Password") },
+                placeholder = { Text(text = "Password.") }
+            )
+
+            Button(
+                onClick = {
+                    Log.d("zzz", "getLoginElements: ")
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = UtilsUi.getColorBlue1())
+            ) {
+                Text("Login", color = Color.White)
+            }
+            Button(
+                onClick = {
+                    Log.d("zzz", "getLoginElements: ")
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = UtilsUi.getColorBlue1())
+            ) {
+                Text("Enter No Login", color = Color.White)
+            }
 
 
+        }
+    }
+
+    @Composable
+    fun getSignUpElements() {
+        var name = remember { mutableStateOf("") }
+        var password = remember { mutableStateOf("") }
+        var rPassword = remember { mutableStateOf("") }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            TextField(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                value = name.value,
+                onValueChange = {
+                    name.value = it
+                },
+                label = { Text(text = "E - mail") },
+                placeholder = { Text(text = "E-mail") }
+            )
+            TextField(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                value = password.value,
+                onValueChange = {
+                    password.value = it
+                },
+                label = { Text(text = "Password") },
+                placeholder = { Text(text = "Password.") }
+            )
+            TextField(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                value = rPassword.value,
+                onValueChange = {
+                    rPassword.value = it
+                },
+                label = { Text(text = "Repeat Password") },
+                placeholder = { Text(text = "Repeat Password.") }
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(15.dp)) {
+                Button(
+                    onClick = {
+                        Log.d("zzz", "sign-up: ")
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = UtilsUi.getColorBlue1())
+                ) {
+                    Text("Sign Up", color = Color.White)
+                }
+            }
+        }
+    }
+    //endregion
 
     //region main ui
     @Composable
     fun getLayout() {
         val paddingCol = 20.dp
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingCol)) {
-            for (r in 1..3) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingCol)
+        ) {
+            for (r in 1..4) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -155,8 +402,19 @@ class Ui {
                         .fillMaxHeight()
                         .background(color = UtilsUi.getColor4Layot(indexUpdated))
                 ) {
-                    Column(modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable(onClick = {
+                            Toast
+                                .makeText(
+                                    UtilContext.getContext(),
+                                    "index: $indexUpdated",
+                                    Toast.LENGTH_SHORT
+                                )
+                                .show()
+                        })) {
                         val pair = UtilsUi.getResIdImageForLayout(indexUpdated)
+
                         Image(
                             painter = painterResource(pair.first),
                             contentDescription = null,
@@ -165,10 +423,13 @@ class Ui {
                                 .weight(5f)
                                 .clip(RoundedCornerShape(15))
                         )
-                        Text(pair.second,
+                        Text(
+                            pair.second,
                             fontWeight = FontWeight.Bold,
                             color = Color.White,
-                            modifier = Modifier.fillMaxWidth().padding(15.dp)
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(15.dp)
                         )
                     }
                 }
@@ -178,13 +439,13 @@ class Ui {
     }
     //endregion
 
-    //region appbar
+    //region Appbar
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun getAppBar() {
+    fun getAppBar(titleAppBar: String, navController: NavHostController) {
         TopAppBar(
             title = {
-                Text("Kahu App", maxLines = 1)
+                Text(titleAppBar, maxLines = 1)
             },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = UtilsUi.getColorBlue1(),
@@ -196,13 +457,18 @@ class Ui {
                 IconButton(onClick = {
                     Log.d("zzz", "menu button clicked in composables")
                     // appViewModel.btnShowMenuClicked()
+                    navController.navigate("screenInfo")
                 }) {
-
+                    Icon(
+                        imageVector = Icons.Default.Info,
+                        contentDescription = "testing123"
+                    )
                 }
             }
         )
     }
-    //endregion
 
+
+    //endregion
 
 }

@@ -8,6 +8,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.firebaseapp.charlieandroidblog.ui.theme.KahuTheme
 import com.firebaseapp.charlieandroidblog.utils.UtilContext
 
@@ -17,9 +20,21 @@ class MainActivity : ComponentActivity() {
        // enableEdgeToEdge()
         UtilContext.initContext(this)
         setContent {
-            Ui().mainScreen()
+            init()
 
         }
+    }
+}
+
+@Composable
+fun init(){
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "screenBreed4me"){
+        composable("screen1"){Ui().screen1Main(navController)}
+        composable("screenInfo"){Ui().screenInfo(navController)}
+        composable("screenBreed4me"){Ui().screenBread4me(navController)}
+        composable("screenLogin"){Ui().screenLogin(navController)}
     }
 }
 

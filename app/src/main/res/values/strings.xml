@@ -1,11 +1,64 @@
 <resources>
-    <string name="app_name">Kahu</string>
+    <string name="app_name" translatable="false">Kahu</string>
 
 
-    <string name="init_layout_breeds">Whats my Breed?</string>
-    <string name="init_layout_before">Before Getting a dog</string>
-    <string name="init_layout_training">Trainning</string>
-    <string name="init_layout_dodont">Do and Dont"'"s</string>
-    <string name="init_layout_food">Food</string>
-    <string name="init_layout_qr">QR</string>
+    <string name="init_layout_breeds" translatable="false">Right Breed 4 me?</string>
+    <string name="init_layout_before" translatable="false">Before Getting a dog</string>
+    <string name="init_layout_training" translatable="false">Trainning</string>
+    <string name="init_layout_dodont" translatable="false">Do and Dont"'"s</string>
+    <string name="init_layout_food" translatable="false">Food</string>
+    <string name="init_layout_qr" translatable="false">QR</string>
+    <string name="init_layout_read" translatable="false">Read my Dog</string>
+    <string name="init_layout_record" translatable="false">Health Records</string>
+
+
+    <string name="breed_size_1" translatable="false">miniature -> under 8.8 lbs</string> <!--4kg-->
+    <string name="breed_size_2" translatable="false">small -> 8.8 to 22 lbs </string> <!--4-10kg-->
+    <string name="breed_size_3" translatable="false">medium -> 22 to 55 lbs</string> <!--10-25kg-->
+    <string name="breed_size_4" translatable="false">large -> 55 to 88 lbs</string> <!--25 - 40kg-->
+    <string name="breed_size_5" translatable="false">extra large -> 88+ lbs</string> <!--40+ kg-->
+
+    <string name="random_breed1" translatable="false">Get the dog for the life you have, not the life you want</string>
+    <string name="random_breed2" translatable="false">Dogs are dogs! love them by allow them to be dogs</string>
+    <string name="random_breed3" translatable="false">Do not humanize your dog</string>
+    <string name="random_breed4" translatable="false">Dog parks are risky. Better to avoid them</string>
+    <string name="random_breed5" translatable="false">Most information in SM are paid for in one way or another, beware</string>
+    <string name="random_breed6" translatable="false">It"'"s ok and recommended to set boundaries with dogs</string>
+    <string name="random_breed7" translatable="false">Consistency is the key to success</string>
+    <string name="random_breed8" translatable="false">We do not deserve dogs</string>
+    <string name="random_breed9" translatable="false">You are a Kahu. -> the guardian of something very valuable</string>
+
+<!--    who should own this bread-->
+    <string name="breed_border" translatable="false">If you are a farmer with sheep, or into dog athletic competitions. Never for laid down or those with 9 to 5 jobs. Need to be part of your daily work.</string>
+    <string name="breed_golden" translatable="false">Perfect for families, active individuals, or anyone looking for a friendly and trainable companion.</string>
+    <string name="breed_german" translatable="false">Great for active people or families who can provide structure, training, and regular exercise.</string>
+    <string name="breed_bulldog" translatable="false">Ideal for laid-back individuals or families who want a low-energy dog with lots of personality.</string>
+    <string name="breed_chihuahua" translatable="false">Perfect for city dwellers or individuals who want a small, loyal companion. May not suit homes with small children.</string>
+    <string name="breed_husky" translatable="false">Only for experienced dog owners who is doing outdoor activities on a daily basis. Not for small spaces or hot climates.</string>
+    <string name="breed_poodle" translatable="false">Ideal for allergy sufferers and active life looking for an intelligent, versatile companion. </string>
+    <string name="breed_beagle" translatable="false">Great for active families or those who enjoy outdoor activities. Should not be left alone.</string>
+    <string name="breed_dachshund" translatable="false">Perfect for those looking for a small dog with a big personality. May need supervision with young kids due to their back issues.</string>
+    <string name="breed_dane" translatable="false">Ideal for those with space and a love for gentle giants. Not for people uncomfortable with large breeds.</string>
+    <string name="breed_labrador" translatable="false">Labradors are friendly, outgoing, and highly trainable. They are ideal for families, active individuals, or those seeking a loyal and playful companion.</string>
+    <string name="breed_rottweiler" translatable="false">Rottweilers are confident, protective, and loyal. Best suited for experienced dog owners who can provide firm training and socialization from a young age.</string>
+    <string name="breed_french_bulldog" translatable="false">French Bulldogs are affectionate, playful, and adaptable. Perfect for city dwellers or anyone looking for a low-energy, loving companion.</string>
+    <string name="breed_spaniel" translatable="false">Spaniels are energetic, friendly, and eager to please. Ideal for active families or individuals who enjoy outdoor activities and can provide regular mental stimulation.</string>
+    <string name="breed_shih_tzu" translatable="false">Shih Tzus are affectionate, gentle, and great with children. Ideal for those who want a small, low-maintenance indoor companion with a big personality.</string>
+    <string name="breed_australian_shepherd" translatable="false">Australian Shepherds are intelligent, energetic, and highly trainable. Perfect for active individuals, outdoor enthusiasts, or families with time for regular training and exercise.</string>
+    <string name="breed_yorkshire_terrier" translatable="false">Yorkshire Terriers are confident, affectionate, and adaptable. Great for apartment dwellers or those seeking a small, stylish companion with a big personality.</string>
+    <string name="breed_mutt" translatable="false">Mutts are unique, diverse, and often healthier than purebreds. Perfect for those looking for a loyal, one-of-a-kind companion with a mix of traits.</string>
+    <string name="breed_maltese" translatable="false">Are gentle, playful, and devoted to their owners. Best suited for individuals or families who want a small, affectionate lap dog.</string>
+    <string name="breed_bernese" translatable="false">Large, sturdy, and agile dog,Intelligent and eager to please, making them highly trainable, Great for families with kids.</string>
+    <string name="breed_chow" translatable="false">Chow Chows are independent, dignified, and protective. They thrive in homes with experienced owners who appreciate their strong-willed personality and can provide consistent training. Their thick coats require regular grooming to keep them looking their best.</string>
+    <string name="breed_doberman" translatable="false">Dobermans are intelligent, loyal, and highly trainable. Ideal for active individuals or families who can dedicate time to their physical and mental stimulation. They make excellent guard dogs but require early socialization and a confident, caring owner.</string>
+    <string name="breed_corgi" translatable="false"> Corgis are ideal for families, particularly those with children, due to their affectionate and loving nature. They thrive in almost any setting, given the necessary essentials</string>
+    <string name="breed_bichon" translatable="false">Small, fluffy dog breed known for their cheerful disposition, playful personality, and distinctive white coat,  intelligent, friendly, and outgoing, making them an excellent companion for families, elderly couples, and individuals alike.</string>
+
+<!--    //where can this breed-->
+    <string name="needs_low" translatable="false">20 min walks or just let it be in the backyard daily it"'"s enough</string>
+    <string name="needs_moderate" translatable="false">30 min walks and with a small backyard will be fine</string>
+    <string name="needs_medium" translatable="false">Needs daily walks and a bit of daily mental stimulation</string>
+    <string name="needs_high" translatable="false">Needs a simple basic job to do, at least 3 hours daily, simple walks wont be enough</string>
+    <string name="needs_job" translatable="false">Needs a job to do, like farming, agility. Also search and rescue, can work many hours a day. Walk and exercise wont be enough</string>
+
 </resources>
