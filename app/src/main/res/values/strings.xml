@@ -28,7 +28,7 @@
     <string name="random_breed8" translatable="false">We do not deserve dogs</string>
     <string name="random_breed9" translatable="false">You are a Kahu. -> the guardian of something very valuable</string>
 
-<!--    who should own this bread-->
+    <!--    who should own this bread-->
     <string name="breed_border" translatable="false">If you are a farmer with sheep, or into dog athletic competitions. Never for laid down or those with 9 to 5 jobs. Need to be part of your daily work.</string>
     <string name="breed_golden" translatable="false">Perfect for families, active individuals, or anyone looking for a friendly and trainable companion.</string>
     <string name="breed_german" translatable="false">Great for active people or families who can provide structure, training, and regular exercise.</string>
@@ -54,11 +54,168 @@
     <string name="breed_corgi" translatable="false"> Corgis are ideal for families, particularly those with children, due to their affectionate and loving nature. They thrive in almost any setting, given the necessary essentials</string>
     <string name="breed_bichon" translatable="false">Small, fluffy dog breed known for their cheerful disposition, playful personality, and distinctive white coat,  intelligent, friendly, and outgoing, making them an excellent companion for families, elderly couples, and individuals alike.</string>
 
-<!--    //where can this breed-->
+    <!--    //where can this breed-->
     <string name="needs_low" translatable="false">20 min walks or just let it be in the backyard daily it"'"s enough</string>
     <string name="needs_moderate" translatable="false">30 min walks and with a small backyard will be fine</string>
     <string name="needs_medium" translatable="false">Needs daily walks and a bit of daily mental stimulation</string>
     <string name="needs_high" translatable="false">Needs a simple basic job to do, at least 3 hours daily, simple walks wont be enough</string>
     <string name="needs_job" translatable="false">Needs a job to do, like farming, agility. Also search and rescue, can work many hours a day. Walk and exercise wont be enough</string>
+
+    <string name="before_title1">Assess your lifestyle:</string>
+    <string name="before_detail1">Evaluate your daily routine, work schedule, and living situation to ensure they align with a dog"'"s needs.</string>
+
+    <string name="before_title2">Consider your financial commitment:</string>
+    <string name="before_detail2">Dogs require ongoing expenses like food, grooming, vet visits, and emergency care.</string>
+
+    <string name="before_title3">Research dog breeds:</string>
+    <string name="before_detail3">Choose a breed or mix that fits your activity level, living space, and experience with pets.</string>
+
+    <string name="before_title4">Time commitment:</string>
+    <string name="before_detail4">Dogs need daily exercise, training, and socialization. Ensure you can dedicate time to meet their needs.</string>
+
+    <string name="before_title5">Pet-friendly home:</string>
+    <string name="before_detail5">Make sure your home is safe and accommodating for a dog, including secure fencing and off-limit areas.</string>
+
+    <string name="before_title6">Plan for training:</string>
+    <string name="before_detail6">All dogs need basic training and socialization. Be prepared to invest time and effort.</string>
+
+    <string name="before_title7">Understand health needs:</string>
+    <string name="before_detail7">Learn about routine care, vaccinations, parasite prevention, and grooming for dogs.</string>
+
+    <string name="before_title8">Emergency readiness:</string>
+    <string name="before_detail8">Be prepared for unexpected medical costs or situations where your dog may need urgent care.</string>
+
+    <string name="before_title9">Consider long-term commitment:</string>
+    <string name="before_detail9">Dogs can live 10–15 years or more. Ensure you"'"re ready for a long-term relationship.</string>
+
+    <string name="before_title10">Adoption vs. purchase:</string>
+    <string name="before_detail10">Research the pros and cons of adopting from a shelter versus purchasing from a breeder.</string>
+
+
+    <string name="do_title1">Positive Socialization:</string>
+    <string name="do_details1">Provide plenty of positive socialization, especially during the puppy"'"s stage.</string>
+
+    <string name="do_title2">Regular Exercise:</string>
+    <string name="do_details2">Ensure your dog gets daily exercise to maintain physical health and mental stimulation.</string>
+
+    <string name="do_title3">Use Positive Reinforcement:</string>
+    <string name="do_details3">Reward good behavior with treats, praise, and affection to encourage positive habits.</string>
+
+    <string name="do_title4">Provide Mental Stimulation:</string>
+    <string name="do_details4">Engage your dog with toys, puzzles, and games to keep their mind active and prevent boredom.</string>
+
+    <string name="do_title5">Stick to a Routine:</string>
+    <string name="do_details5">Maintain a consistent feeding, walking, and bedtime schedule to create a sense of security.</string>
+
+    <string name="do_not_title1">Avoid Punishment:</string>
+    <string name="do_not_details1">Do not yell at or physically punish your dog; it can lead to fear and aggression.</string>
+
+    <string name="do_not_title2">Don"'"t Overfeed:</string>
+    <string name="do_not_details2">Overfeeding can lead to obesity and health issues. Stick to portion sizes recommended by your vet.</string>
+
+    <string name="do_not_title3">Avoid Neglecting Training:</string>
+    <string name="do_not_details3">Skipping regular training sessions can lead to behavioral problems over time.</string>
+
+    <string name="do_not_title4">Don"'"t Ignore Health Signs:</string>
+    <string name="do_not_details4">Always address unusual behavior, appetite changes, or symptoms of illness promptly with your vet.</string>
+
+    <string name="do_not_title5">Leaving Them Alone Too Long:</string>
+    <string name="do_not_details5">Dogs are social animals and can develop anxiety or destructive behaviors if left alone for extended periods.</string>
+
+    <!--    Before_Trainning, Relationship, Socialization, Expectations, Tricks-->
+    <string name="bad_food">Do not feed :</string>
+    <string-array name="bad_foods">
+        <item>chocolate</item>
+        <item>grapes</item>
+        <item>raisins</item>
+        <item>onions</item>
+        <item>garlic</item>
+        <item>macadamia nuts</item>
+        <item>avocado</item>
+        <item>alcohol</item>
+        <item>caffeine</item>
+        <item>raw dough</item>
+        <item>artificial sweeteners (xylitol)</item>
+        <item>salt</item>
+        <item>fatty foods</item>
+        <item>processed food</item>
+    </string-array>
+
+    <string name="good_food">Good food :</string>
+    <string-array name="good_foods">
+        <item>chicken</item>
+        <item>turkey</item>
+        <item>beef</item>
+        <item>salmon</item>
+        <item>pumpkin</item>
+        <item>carrots</item>
+        <item>green beans</item>
+        <item>apples</item>
+        <item>blueberries</item>
+        <item>strawberries</item>
+        <item>watermelon</item>
+        <item>peanut butter (unsweetened)</item>
+        <item>eggs</item>
+        <item>plain yogurt</item>
+        <item>oatmeal</item>
+        <item>sweet potatoes</item>
+        <item>cucumber</item>
+        <item>spinach</item>
+        <item>broccoli</item>
+        <item>zucchini</item>
+    </string-array>
+
+
+    <string name="training_before_training_title">Before Trainig</string>
+    <string name="training_before_training_details">
+    Gather essential items: collar, ID tag, leash, crate, food, bedding, and toys.
+    \nPrepare a safe space where the dog will live, ensuring it"'"s secure, free from hazards, and away from valuable items.
+    \nSet aside time to meet your dog"'"s basic needs, including exercise, sleep, and mental stimulation.
+    \nEstablish regular routines and rituals like morning cuddles or evening walks to build trust and consistency.
+    </string>
+
+    <string name="training_boundaries_title">Building a Relationship</string>
+    <string name="training_boundaries_details">
+    Focus on trust-building activities, such as gentle play and rewarding good behavior.
+    \nUse positive reinforcement techniques to encourage desired actions.
+    \nSpend quality time with your dog daily to strengthen your bond.
+    \nMaintain eye contact and a calm, reassuring tone during interactions.
+        \nHand feed your dog.
+</string>
+
+    <string name="training_socialization_title">Socialization</string>
+    <string name="training_socialization_details">
+      \nMake sure he can be calm around dogs,(start to walk where your dog can see from far away) without interact with other dogs, before actually playing with dogs
+        \nLearn how to properly introduce dogs to each other. (in neutral ground, walking along with 2 humans in the middle of the walk.)
+        \nIntroduce your dog to various environments, people, and other animals in a controlled manner.
+        \nReward calm behavior and gradually increase exposure to new experiences.
+    \nMonitor for signs of stress, and provide reassurance when needed.
+        \nMonitor any interaction, so you can break any possible fight before it happens, and break it, as soon as possible, and try to stay calm while and after you do it.
+    </string>
+
+    <string name="training_expectations_title">Boundaries</string>
+    <string name="training_expectations_details">
+    Clearly define boundaries and house rules from the start. (example, not allowed in bed, or can"'t" jump on people)
+    \nBe consistent with commands and enforce rules calmly but firmly.
+    \nUse simple, clear language for commands to avoid confusion.
+    \nReward compliance with treats, praise or playtime.
+        \nDo not inflict fear or pain, that will only ruin the relationship.
+</string>
+
+    <string name="training_tricks_title">Teaching Tricks</string>
+    <string name="training_tricks_details">
+    Never start with simple tricks like "sit"
+        \nRecall and stay are the most important lessons to teach. (Prioritize this before anything else)
+        \nChange commands and words like, yes, no, stay, come to another language.
+        \nAlways use the same words or sound for teaching. Same tone, same volume, same energy.
+        \nTeach to stay calm in a create
+        \nDo not let your dog in a create for many hours.
+        \nThe trick for teaching any command is lure them into the action o position, and when done, praising with words, affection and food.
+    \nUse a clicker or verbal cue to mark correct behaviors.
+    \nPractice regularly in short sessions to maintain your dog"'"s focus.
+    \nKeep training fun and engaging by incorporating play and rewards.
+</string>
+
+
 
 </resources>

@@ -30,13 +30,19 @@ class MainActivity : ComponentActivity() {
 fun init(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "screenBreed4me"){
-        composable("screen1"){Ui().screen1Main(navController)}
+    NavHost(navController = navController, startDestination = "screenLogin"){
+        composable("screenMain"){Ui().screen1Main(navController)}
         composable("screenInfo"){Ui().screenInfo(navController)}
         composable("screenBreed4me"){Ui().screenBread4me(navController)}
         composable("screenLogin"){Ui().screenLogin(navController)}
+        composable("screenBefore"){Ui().screenBefore(navController)}
+        composable("screenDoAndDont"){Ui().screenDoDont(navController)}
+        composable("screenFoods"){Ui().screenFoods(navController)}
+        composable("screenTraining"){Ui().screenTraining(navController)}
     }
 }
+
+//TODO Training, ponerlo por tipos.. calm, tricks, socialization... etc.
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

@@ -33,6 +33,7 @@ import com.firebaseapp.charlieandroidblog.R
 import com.firebaseapp.charlieandroidblog.utils.UtilsUi
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
@@ -71,9 +72,7 @@ class Ui {
     }
 
     @Composable
-    fun screenInfo(controller: NavHostController) {
-
-    }
+    fun screenInfo(controller: NavHostController) {}
 
     @Composable
     fun screenBread4me(controller: NavHostController) {
@@ -81,18 +80,12 @@ class Ui {
         var random = remember { mutableStateOf(1) }
         Column(modifier = Modifier.fillMaxSize()) {
             getAppBar("Breed For Me",controller)
-//            Card (elevation = CardDefaults.cardElevation(defaultElevation = 15.dp) ,
-//                modifier = Modifier
-//                .padding(horizontal = 8.dp, vertical = 8.dp)
-//                .fillMaxWidth()
-//                //.border(color = Color.Black, width = 1.dp)
-//                .padding(5.dp),
-//                shape = RoundedCornerShape(corner = CornerSize(16.dp))) {
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(10.dp)) {
+                ) {
                 Box(
                     modifier = Modifier
+                        .padding(10.dp)
                         .fillMaxWidth() // adjust size as needed
                         .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
                         .background(color = UtilsUi.getColorAlmostBlue())
@@ -130,17 +123,16 @@ class Ui {
                             )
                     }
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-
                 val list = UtilsContent.getListOfBreeds()
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(-25.dp)
                 ) {
                     items(list.size) {
-                        Box (modifier = Modifier.fillMaxWidth()
+                        Box (modifier = Modifier
+                            .fillMaxWidth()
                             .padding(15.dp)
-                        .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
-                        .background(color = UtilsUi.getRandomColor())) {
+                            .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
+                            .background(color = UtilsUi.getRandomColor())) {
                             Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -151,7 +143,7 @@ class Ui {
                                     style = TextStyle(
                                         fontWeight = FontWeight.Bold,
                                         color = Color.White,
-                                        fontSize = 16.sp
+                                        fontSize = 18.sp
                                     )
                                 )
                                 Text(  //title
@@ -186,9 +178,241 @@ class Ui {
     }
 
     @Composable
-    fun getCardForBreed(item: Breed4Me){
+    fun screenBefore(controller: NavHostController) {
 
+        Column(modifier = Modifier.fillMaxSize()) {
+            getAppBar("Before The Dog", controller)
+
+            val listTuple = UtilsContent.getListOfBeforeGettingADog()
+            LazyColumn {
+                items(listTuple.size) {
+                    Box(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth() // adjust size as needed
+                            .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
+                            .background(color = UtilsUi.getRandomColor())
+                            .border(
+                                1.dp,
+                                color = UtilsUi.getColorAlmostBlack(),
+                                RoundedCornerShape(16.dp)
+                            )
+                    ) {
+                        Column(modifier = Modifier.padding(10.dp)) {
+                            val title = " º " + listTuple.get(it).first
+                            val subTitle = "  " + listTuple.get(it).second
+                            Text(
+                                text = title,
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            )
+                            Spacer(modifier = Modifier
+                                .fillMaxWidth()
+                                .height(4.dp))
+                            Text(
+                                text = subTitle,
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 12.sp,
+                                )
+                            )
+                        }
+                    }
+                }
+
+            }
+        }
     }
+
+    @Composable
+    fun screenFoods(controller: NavHostController){
+        Column(modifier = Modifier.fillMaxSize()) {
+            //getAppBar("Do & Don't", controller)
+            val listTuple = UtilsContent.getListFoods()
+            val indexStartSecondArray = listTuple.get(0).size
+            val arrayList = arrayListOf<String>().apply {
+                addAll(listTuple.get(0))
+                addAll(listTuple.get(1))
+            }
+            LazyColumn (modifier = Modifier.padding(1.dp)
+                .background(color = UtilsUi.getColorAlmostWhite2())
+                ,verticalArrangement = Arrangement.SpaceEvenly
+            ){
+                items(arrayList.size) { index ->
+                    when(index){
+                        0,indexStartSecondArray-> {
+                            Column (Modifier.padding(0.dp, 5.dp)){
+                                //val color = if (index == 0) Color(0xFF1553AB) else Color(0xFF70000A)
+                                Box(
+                                    modifier = Modifier.fillMaxWidth()
+                                        .background(color = Color(0xFF1553AB))
+                                        .padding(10.dp)
+                                        .height(25.dp)
+                                ) {
+                                    Text(
+                                        UtilsContent.getTitleFoodByIndex(index),
+                                        style = TextStyle(
+                                            color = Color.White,
+                                            fontSize = 22.sp,
+                                            fontWeight = FontWeight.Bold,
+                                        )
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    Box(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth() // adjust size as needed
+                            .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
+                            .background(color = UtilsUi.getGoodOrBadColor(index,indexStartSecondArray))
+                            .border(
+                                1.dp,
+                                color = UtilsUi.getColorAlmostBlack(),
+                                RoundedCornerShape(16.dp)
+                            )
+                    ) {
+                        Column(modifier = Modifier.padding(10.dp)) {
+                            val title = " >> " + arrayList.get(index)
+                            Text(
+                                text = title,
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun screenDoDont(controller: NavHostController){
+        Column(modifier = Modifier.fillMaxSize()) {
+            //getAppBar("Do & Don't", controller)
+            val listTuple = UtilsContent.getListOfDoAndDont()
+            LazyColumn {
+                items(listTuple.size) { index ->
+                     when(index){
+                         0,5-> {
+                             Column {
+                                 Box(
+                                     modifier = Modifier.fillMaxWidth()
+                                         .background(color = UtilsUi.getRandomColor())
+                                         .padding(10.dp)
+                                         .height(25.dp)
+                                 ) {
+                                     Text(
+                                         UtilsContent.getSubtitleByIndex(index),
+                                         style = TextStyle(
+                                             color = Color.White,
+                                             fontSize = 22.sp,
+                                             fontWeight = FontWeight.Bold,
+                                         )
+                                     )
+                                 }
+
+                             }
+                         }
+                     }
+                    Box(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth() // adjust size as needed
+                            .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
+                            .background(color = UtilsUi.getRandomColor())
+                            .border(
+                                1.dp,
+                                color = UtilsUi.getColorAlmostBlack(),
+                                RoundedCornerShape(16.dp)
+                            )
+                    ) {
+                        Column(modifier = Modifier.padding(10.dp)) {
+                            val title = " º " + listTuple.get(index).first
+                            val subTitle = "  " + listTuple.get(index).second
+                            Text(
+                                text = title,
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            )
+                            Spacer(modifier = Modifier
+                                .fillMaxWidth()
+                                .height(4.dp))
+                            Text(
+                                text = subTitle,
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 12.sp,
+                                )
+                            )
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun screenTraining(controller: NavHostController){
+        Column (modifier = Modifier.fillMaxWidth()) {
+            getAppBar("Training", controller)
+            getTraining()
+        }
+    }
+
+    @Composable
+    fun getTraining(){
+        val listTraining = UtilsContent.getListTraining()
+        val type = listTraining.get(0).type
+        LazyColumn{
+            items(listTraining.size) {
+                Box (modifier = Modifier.fillMaxWidth().padding(10.dp)){
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth() // adjust size as needed
+                            .clip(RoundedCornerShape(16.dp)) // adjust corner radius as needed
+                            .background(color = UtilsUi.getRandomColor())
+                            .padding(10.dp)
+
+                    ) {
+                            Text(
+                                text = listTraining.get(it).title,
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            )
+                            Spacer(modifier = Modifier
+                                .fillMaxWidth()
+                                .height(4.dp))
+                            Text(
+                                text = listTraining.get(it).subTitle,
+                                style = TextStyle(
+                                    color = Color.White,
+                                    fontSize = 12.sp,
+                                )
+                            )
+
+                    }
+                }
+
+            }
+        }
+    }
+
 
     //region Login Screen
     @Composable
@@ -467,6 +691,8 @@ class Ui {
             }
         )
     }
+
+
 
 
     //endregion

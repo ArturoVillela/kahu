@@ -10,6 +10,8 @@ import com.firebaseapp.charlieandroidblog.model.Healty
 import com.firebaseapp.charlieandroidblog.model.Needs
 import com.firebaseapp.charlieandroidblog.model.Separation
 import com.firebaseapp.charlieandroidblog.model.ShelterType
+import com.firebaseapp.charlieandroidblog.model.Training
+import com.firebaseapp.charlieandroidblog.model.TrainingType
 
 class UtilsContent {
 
@@ -40,6 +42,33 @@ class UtilsContent {
                 else-> R.string.random_breed1
             }
             return UtilContext.getContext().resources.getString(id)
+        }
+
+        fun getListTraining(): ArrayList<Training>{
+
+            var al = ArrayList<Training>()
+            al.add(Training(TrainingType.Before_Trainning,
+                getTrainingTitleStringByTrainingType(TrainingType.Before_Trainning),
+                getTrainingDescStringByTrainingType(TrainingType.Before_Trainning)
+            ))
+            al.add(Training(TrainingType.Relationship,
+                getTrainingTitleStringByTrainingType(TrainingType.Relationship),
+                getTrainingDescStringByTrainingType(TrainingType.Relationship)
+            ))
+            al.add(Training(TrainingType.Socialization,
+                getTrainingTitleStringByTrainingType(TrainingType.Socialization),
+                getTrainingDescStringByTrainingType(TrainingType.Socialization)
+            ))
+            al.add(Training(TrainingType.Boundaries,
+                getTrainingTitleStringByTrainingType(TrainingType.Boundaries),
+                getTrainingDescStringByTrainingType(TrainingType.Boundaries)
+            ))
+            al.add(Training(TrainingType.Tricks,
+                getTrainingTitleStringByTrainingType(TrainingType.Tricks),
+                getTrainingDescStringByTrainingType(TrainingType.Tricks)
+            ))
+
+            return al
         }
 
         fun getListOfBreeds(): List<Breed4Me> {
@@ -354,6 +383,28 @@ class UtilsContent {
             return res
         }
 
+        fun getTrainingTitleStringByTrainingType(type: TrainingType):String{
+            val res = when(type){
+                TrainingType.Before_Trainning -> UtilContext.getContext().getString(R.string.training_before_training_title)
+                TrainingType.Boundaries -> UtilContext.getContext().getString(R.string.training_boundaries_title)
+                TrainingType.Relationship -> UtilContext.getContext().getString(R.string.training_boundaries_title)
+                TrainingType.Socialization -> UtilContext.getContext().getString(R.string.training_socialization_title)
+                TrainingType.Tricks -> UtilContext.getContext().getString(R.string.training_tricks_title)
+            }
+            return res
+        }
+
+        fun getTrainingDescStringByTrainingType(type: TrainingType):String{
+            val res = when(type){
+                TrainingType.Before_Trainning -> UtilContext.getContext().getString(R.string.training_before_training_details)
+                TrainingType.Boundaries -> UtilContext.getContext().getString(R.string.training_boundaries_details)
+                TrainingType.Relationship -> UtilContext.getContext().getString(R.string.training_boundaries_details)
+                TrainingType.Socialization -> UtilContext.getContext().getString(R.string.training_socialization_details)
+                TrainingType.Tricks -> UtilContext.getContext().getString(R.string.training_tricks_details)
+            }
+            return res
+        }
+
         fun getBreedNeedsByNeed(n : Needs):String{
             val res = when(n){
                 Needs.Low -> UtilContext.getContext().getString(R.string.needs_low)
@@ -363,6 +414,123 @@ class UtilsContent {
                 Needs.NeedsAJobs -> UtilContext.getContext().getString(R.string.needs_job)
             }
 
+            return res
+        }
+
+        fun getListFoods(): ArrayList<Array<String>>{
+            val aGoodFoods = UtilContext.getContext().resources.getStringArray(R.array.good_foods)
+            val aBadFoods = UtilContext.getContext().resources.getStringArray(R.array.bad_foods)
+            aBadFoods.sort()
+            aGoodFoods.sort()
+            val al = ArrayList<Array<String>>()
+            al.add(aGoodFoods)
+            al.add(aBadFoods)
+            return al
+        }
+
+
+        fun getListOfBeforeGettingADog():ArrayList<Pair<String,String>>{
+            val al = ArrayList<Pair<String,String>>()
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title1),
+                UtilContext.getContext().getString(R.string.before_detail1)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title2),
+                UtilContext.getContext().getString(R.string.before_detail2)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title3),
+                UtilContext.getContext().getString(R.string.before_detail3)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title4),
+                UtilContext.getContext().getString(R.string.before_detail4)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title5),
+                UtilContext.getContext().getString(R.string.before_detail5)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title6),
+                UtilContext.getContext().getString(R.string.before_detail6)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title7),
+                UtilContext.getContext().getString(R.string.before_detail7)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title8),
+                UtilContext.getContext().getString(R.string.before_detail8)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title9),
+                UtilContext.getContext().getString(R.string.before_detail9)))
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.before_title10),
+                UtilContext.getContext().getString(R.string.before_detail10)))
+
+            return al
+        }
+
+        fun getListOfDoAndDont():ArrayList<Pair<String,String>>{
+            val al = ArrayList<Pair<String,String>>()
+
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_title1),
+                UtilContext.getContext().getString(R.string.do_details1)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_title2),
+                UtilContext.getContext().getString(R.string.do_details2)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_title3),
+                UtilContext.getContext().getString(R.string.do_details3)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_title4),
+                UtilContext.getContext().getString(R.string.do_details4)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_title5),
+                UtilContext.getContext().getString(R.string.do_details5)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_not_title1),
+                UtilContext.getContext().getString(R.string.do_not_details1)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_not_title2),
+                UtilContext.getContext().getString(R.string.do_not_details2)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_not_title3),
+                UtilContext.getContext().getString(R.string.do_not_details3)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_not_title4),
+                UtilContext.getContext().getString(R.string.do_not_details4)
+            ))
+            al.add(Pair(
+                UtilContext.getContext().getString(R.string.do_not_title5),
+                UtilContext.getContext().getString(R.string.do_not_details5)
+            ))
+
+
+            return al
+        }
+
+        fun getSubtitleByIndex(i: Int):String {
+            val res = if (i == 0) "Do" else "Dont"
+            return res
+        }
+
+        fun getTitleFoodByIndex(i: Int):String {
+            val context = UtilContext.getContext()
+            val res = if (i == 0) context.getString(R.string.good_food) else context.getString(R.string.bad_food)
             return res
         }
 
