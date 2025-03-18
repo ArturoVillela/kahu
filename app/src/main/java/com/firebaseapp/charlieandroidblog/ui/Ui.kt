@@ -1,3 +1,4 @@
+import android.app.Activity
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.core.animateIntOffsetAsState
@@ -35,7 +36,6 @@ import com.firebaseapp.charlieandroidblog.utils.UtilsUi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
@@ -45,10 +45,13 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Observer
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.firebaseapp.charlieandroidblog.model.Breed4Me
+import com.firebaseapp.charlieandroidblog.MainActivity
 import com.firebaseapp.charlieandroidblog.utils.UtilContext
 import com.firebaseapp.charlieandroidblog.utils.UtilsContent
+import com.firebaseapp.charlieandroidblog.vm.VMRecords
 import kotlin.math.roundToInt
 
 class Ui {
@@ -373,6 +376,66 @@ class Ui {
     }
 
     @Composable
+    fun screenRecord(controller: NavHostController){
+        Column (modifier = Modifier.fillMaxWidth()) {
+            getAppBar("Health Records", controller)
+            getRecords()
+        }
+    }
+
+    @Composable
+    fun getRecords() {
+        val std_height = 50.dp
+        var record = remember { mutableStateOf("") }
+        var list = ArrayList<String>()
+        var vm:VMRecords = viewModel()
+        vm.listRecords.observe(UtilContext.getContext() as MainActivity, Observer {
+            vm.listRecords.value?.let{
+                list = it
+            }
+        })
+
+        Column(modifier = Modifier.fillMaxSize().padding(5.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth()
+                    .height(52.dp)
+                    .padding(1.dp)
+                    .background(color = Color.Gray)
+            ) {
+                Box(
+                    modifier = Modifier.weight(2f)
+                        .height(std_height)
+                        .background(color = Color.Blue)
+                ) {}
+                TextField(
+                    value = record.value,
+                    onValueChange = {
+                        record.value = it
+                    },
+                    label = { Text(text = "record") }, // hint, texto inicial k desaparece o se pone como titulo arriba en letras chikitas
+                    placeholder = { Text(text = "record") } //texto k aparece cuando empiezas a escribir
+                )
+                Button(
+                    onClick = {
+                        Log.d("zzz", "add element: ")
+                    },
+                    modifier = Modifier.weight(3f),
+                    colors = ButtonDefaults.buttonColors(containerColor = UtilsUi.getColorBlue1())
+                ) {
+                    Text("Add", color = Color.White)
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            LazyColumn (modifier = Modifier.fillMaxSize().padding(10.dp)){
+                items(list.size) {
+                    Text(">> "+list.get(it))
+                }
+            }
+        }
+
+    }
+
+    @Composable
     fun getTraining(){
         val listTraining = UtilsContent.getListTraining()
         val type = listTraining.get(0).type
@@ -412,7 +475,6 @@ class Ui {
             }
         }
     }
-
 
     //region Login Screen
     @Composable

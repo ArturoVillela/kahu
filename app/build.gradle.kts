@@ -19,6 +19,7 @@ android {
     }
 
     buildTypes {
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -36,10 +37,24 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+
 }
 
 dependencies {
+
+    val retrofitVersion = "2.11.0"  // optional to put a variable here
+    val compose_version = "2.4.1"
+    val room_version = "2.6.1"
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$compose_version")
+    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    //implementation ("androidx.compose.runtime:runtime-livedata:$compose_version")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.7.6")
+
+    implementation ("androidx.room:room-runtime:$room_version")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

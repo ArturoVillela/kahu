@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
 fun init(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "screenLogin"){
+    NavHost(navController = navController, startDestination = "screenHealthRecords"){
         composable("screenMain"){Ui().screen1Main(navController)}
         composable("screenInfo"){Ui().screenInfo(navController)}
         composable("screenBreed4me"){Ui().screenBread4me(navController)}
@@ -39,6 +39,7 @@ fun init(){
         composable("screenDoAndDont"){Ui().screenDoDont(navController)}
         composable("screenFoods"){Ui().screenFoods(navController)}
         composable("screenTraining"){Ui().screenTraining(navController)}
+        composable("screenHealthRecords"){Ui().screenRecord(navController)}
     }
 }
 
